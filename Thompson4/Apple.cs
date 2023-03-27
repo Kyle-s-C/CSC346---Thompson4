@@ -8,7 +8,12 @@ namespace AppStoreNS
         {
             Apps = apps ?? new List<App>();
             Selected = selected;
-            Paid = paid;    
+            Paid = paid;  
+
+            Apps.Add(new App("Final Cut Pro", 54, 3));
+            Apps.Add(new App("Logic Pro", 50, 4));
+            Apps.Add(new App("MainStage", 46, 5));
+            Apps.Add(new App("Pixelmator Pro", 57, 2)); 
         }
 
         private Apple(Apple copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)

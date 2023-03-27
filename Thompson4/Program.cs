@@ -7,23 +7,23 @@ namespace AppStoreNS
     {
         static void Main(string[] args)
         {
-            List<App> appleApps = new List<App>
-            {
-                new App("Final Cut Pro", 54, 3),
-                new App("Logic Pro", 50, 4),
-                new App("MainStage", 46, 5),
-                new App("Pixelmator Pro", 57, 2)
-            };
-            Apple appleStore = new Apple(appleApps);
+            // List<App> appleApps = new List<App>
+            // {
+            //     new App("Final Cut Pro", 54, 3),
+            //     new App("Logic Pro", 50, 4),
+            //     new App("MainStage", 46, 5),
+            //     new App("Pixelmator Pro", 57, 1)
+            // };
+            Apple appleStore = new Apple();
 
-            List<App> googleApps = new List<App>
-            {
-                new App("Cubasis 3", 46, 3),
-                new App("FL Studio Mobile", 50, 5),
-                new App("LumaFusion Pro", 57, 1)
+            // List<App> googleApps = new List<App>
+            // {
+            //     new App("Cubasis 3", 46, 3),
+            //     new App("FL Studio Mobile", 50, 5),
+            //     new App("LumaFusion Pro", 57, 1)
                 
-            };
-            Google googleStore = new Google(googleApps);
+            // };
+            Google googleStore = new Google();
 
             bool exit = false;
 
@@ -34,12 +34,10 @@ namespace AppStoreNS
                 Console.WriteLine("2. Google");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
-                
 
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    Console.WriteLine();
                     switch (choice)
                     {
                         case 1:

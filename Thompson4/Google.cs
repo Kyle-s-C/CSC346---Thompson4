@@ -7,6 +7,11 @@ namespace AppStoreNS
             Apps = apps ?? new List<App>();
             Selected = selected;
             Paid = paid;
+
+            Apps.Add(new App("Cubasis 3", 46, 3));
+            Apps.Add(new App("FL Studio Mobile", 50, 5));
+            Apps.Add(new App("LumaFusion Pro", 57, 1));
+
         }
         
         private Google(Google copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
@@ -19,6 +24,7 @@ namespace AppStoreNS
         protected override void WelcomeToStore()
         {
             Console.WriteLine("Welcome to the Google AppStore!");
+            Console.WriteLine("-------------------------------");
         }
 
         protected override void ReturnChange()
