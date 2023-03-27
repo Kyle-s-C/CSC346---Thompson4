@@ -16,15 +16,12 @@ namespace AppStoreNS
             };
             Apple appleStore = new Apple(appleApps);
 
-            Apple copyAppleStore = new Apple(appleStore);
-
-            
-
             List<App> googleApps = new List<App>
             {
                 new App("Cubasis 3", 46, 3),
                 new App("FL Studio Mobile", 50, 5),
                 new App("LumaFusion Pro", 57, 1)
+                
             };
             Google googleStore = new Google(googleApps);
 
@@ -35,7 +32,6 @@ namespace AppStoreNS
                 Console.WriteLine("Select an app store:");
                 Console.WriteLine("1. Apple");
                 Console.WriteLine("2. Google");
-                Console.WriteLine("3. CopyAppleStore");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -49,9 +45,6 @@ namespace AppStoreNS
                             break;
                         case 2:
                             googleStore.PurchaseApp();
-                            break;
-                        case 3:
-                            copyAppleStore.PurchaseApp();
                             break;
                         case 0:
                             exit = true;

@@ -8,15 +8,14 @@ namespace AppStoreNS
         {
             Apps = apps ?? new List<App>();
             Selected = selected;
-            Paid = paid;
-
-
-        
+            Paid = paid;    
         }
 
-        public Apple(Apple copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
+        private Apple(Apple copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
         { 
-
+            Apps  = copy.Apps;
+            Selected = copy.Selected;
+            Paid = copy.Paid;
 
         }
     

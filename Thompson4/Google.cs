@@ -7,10 +7,14 @@ namespace AppStoreNS
             Apps = apps ?? new List<App>();
             Selected = selected;
             Paid = paid;
-            new App("Cubasis 3", 46, 3);
-            new App("FL Studio Mobile", 50, 5);
-            new App("LumaFusion Pro", 57, 1);
         }
+        
+        private Google(Google copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
+        { 
+
+
+        }
+    
 
         protected override void WelcomeToStore()
         {
