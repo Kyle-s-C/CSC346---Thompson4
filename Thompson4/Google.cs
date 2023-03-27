@@ -36,7 +36,7 @@ namespace AppStoreNS
             Console.WriteLine("Change returned:");
             for (int i = 0; i < changeValues.Length; i++)
             {
-                Console.WriteLine($"{changeQuantities[i]} x ${changeValues[i]}");
+                Console.WriteLine($"({changeQuantities[i]}) x ${changeValues[i]}");
             }
         }
     }

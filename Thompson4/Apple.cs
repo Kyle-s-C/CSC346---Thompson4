@@ -24,6 +24,7 @@ namespace AppStoreNS
         protected override void WelcomeToStore()
         {
             Console.WriteLine("Welcome to the Apple AppStore!");
+            Console.WriteLine("------------------------------");
         }
 
         protected override void PayForApp() 
@@ -51,7 +52,9 @@ namespace AppStoreNS
 
                 if (totalPayment < Apps[Selected].Price)
                 {
-                    Console.WriteLine("Insufficient payment. Please try again.");
+                    Console.WriteLine("|-----------------------------------------|");
+                    Console.WriteLine("| Insufficient payment. Please try again. |");
+                    Console.WriteLine("|-----------------------------------------|");
                 }
 
             }while(totalPayment < Apps[Selected].Price);

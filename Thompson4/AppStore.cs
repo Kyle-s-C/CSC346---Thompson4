@@ -59,6 +59,7 @@ namespace AppStoreNS
                 }
                 else if (Apps[choice].Available <= 0)
                 {
+
                     Console.WriteLine($"{Apps[choice].Name} is sold out. Please select another App!");
                 }
             } while (!validInput || choice < 0 || choice >= Apps.Count || Apps[choice].Available <= 0);
@@ -95,7 +96,9 @@ namespace AppStoreNS
 
                     if (totalPayment < Apps[Selected].Price)
                     {
-                        Console.WriteLine("Insufficient payment. Please try again.");
+                        Console.WriteLine("|-----------------------------------------|");
+                        Console.WriteLine("| Insufficient payment. Please try again. |");
+                        Console.WriteLine("|-----------------------------------------|");
                     }
             }while (totalPayment < Apps[Selected].Price);
 

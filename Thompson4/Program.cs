@@ -12,7 +12,7 @@ namespace AppStoreNS
                 new App("Final Cut Pro", 54, 3),
                 new App("Logic Pro", 50, 4),
                 new App("MainStage", 46, 5),
-                new App("Pixelmator Pro", 57, 1)
+                new App("Pixelmator Pro", 57, 2)
             };
             Apple appleStore = new Apple(appleApps);
 
@@ -34,10 +34,12 @@ namespace AppStoreNS
                 Console.WriteLine("2. Google");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
+                
 
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
+                    Console.WriteLine();
                     switch (choice)
                     {
                         case 1:
