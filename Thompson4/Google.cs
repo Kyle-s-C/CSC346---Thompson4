@@ -8,9 +8,9 @@ namespace AppStoreNS
             Selected = selected;
             Paid = paid;
 
-            Apps.Add(new App("Cubasis 3", 46, 3));
-            Apps.Add(new App("FL Studio Mobile", 50, 5));
-            Apps.Add(new App("LumaFusion Pro", 57, 1));
+            // Apps.Add(new App("Cubasis 3", 46, 3));
+            // Apps.Add(new App("FL Studio Mobile", 50, 5));
+            // Apps.Add(new App("LumaFusion Pro", 57, 1));
 
         }
         

@@ -10,13 +10,11 @@ namespace AppStoreNS
             Selected = selected;
             Paid = paid;  
 
-            Apps.Add(new App("Final Cut Pro", 54, 3));
-            Apps.Add(new App("Logic Pro", 50, 4));
-            Apps.Add(new App("MainStage", 46, 5));
-            Apps.Add(new App("Pixelmator Pro", 57, 2)); 
         }
 
-        private Apple(Apple copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
+            
+
+        private Apple(Apple copy) 
         { 
             Apps  = copy.Apps;
             Selected = copy.Selected;
@@ -28,12 +26,19 @@ namespace AppStoreNS
        
         protected override void WelcomeToStore()
         {
-            Console.WriteLine("Welcome to the Apple AppStore!");
+            
+            Console.WriteLine("\nWelcome to the Apple AppStore!");
             Console.WriteLine("------------------------------");
         }
 
         protected override void PayForApp() 
         {
+            
+            if (Apps.Count == 0)
+            {
+                
+            } else 
+            {
             int totalPayment = 0;
             int[] payments = { 10, 5, 1 };
             
@@ -65,15 +70,9 @@ namespace AppStoreNS
             }while(totalPayment < Apps[Selected].Price);
 
             Paid = totalPayment;
+            }
 
         }
 
     }
 }
-
-
-
-
-
-
-

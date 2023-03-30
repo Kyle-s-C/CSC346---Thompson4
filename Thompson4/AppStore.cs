@@ -1,19 +1,57 @@
-
+/********************************************************************
+*** NAME : Kyle Thompson                                          ***
+*** CLASS : CSc 346                                               ***
+*** ASSIGNMENT : Assignment #4                                    ***
+*** DUE DATE : 3-31-23                                            ***
+*** INSTRUCTOR : GAMRADT                                          ***
+*********************************************************************
+*** DESCRIPTION : Using VS Code create a user-defnined Abstract   ***
+***               Data Type using C# classes named App, AppStore, ***
+***               Apple, and google. This the AppStore class that ***
+***               is abstract. AppStore class describes the       ***
+***               abstract generalized AppStore.                  ***
+********************************************************************/
 namespace AppStoreNS
 {
     public abstract class AppStore
     {
+        //properties
         protected List<App> Apps { get; set; }
         protected int Selected { get; set; }
         protected int Paid { get; set; }
 
-        public AppStore(List<App>? apps = null, int selected = -1, int paid = 0)
+        /*********************************************************************
+        *** METHOD: public AppStore(....)                                  ***
+        **********************************************************************
+        *** DESCRIPTION : This is the default/overloaded/parameterized     ***
+        ***               constructor. If no attributes are set when       ***
+        ***               creating an App the default of name is "",       ***
+        ***               price to 0 and available to 0, otherwise set to  ***
+        ***               what is specified.                               ***
+        *** INPUT ARGS : List<App>? apps = null, int selected = 0,         ***
+        ***              int paid = 0                                      ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : returns a new instance of AppStore object             ***
+        *********************************************************************/
+        public AppStore(List<App>? apps = null, int selected = 0, int paid = 0)
         {
             Apps = apps ?? new List<App>();
             Selected = selected;
             Paid = paid;
         }
 
+        /*********************************************************************
+        *** METHOD: private AppStore(AppStore copy)                        ***
+        **********************************************************************
+        *** DESCRIPTION : This is the copy constructor which copies        ***
+        ***               all attributes from one AppStore object instance ***
+        ***               to another AppStore object instance              ***
+        *** INPUT ARGS : AppStore copy                                     ***                                    
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         private AppStore(AppStore copy)
         {
             Apps = copy.Apps;
@@ -21,6 +59,18 @@ namespace AppStoreNS
             Paid = copy.Paid;
         }
 
+
+        /*********************************************************************
+        *** METHOD: public void PurchaseApp()                              ***
+        **********************************************************************
+        *** DESCRIPTION : PurchaseApp manages the overall flow of each     ***
+        ***               AppStore and is repeated until shutdown by the   ***
+        ***               driver program.                                  ***
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         public void PurchaseApp()
         {
             WelcomeToStore();
@@ -30,42 +80,81 @@ namespace AppStoreNS
             DownloadApp();
         }
 
+        /*********************************************************************
+        *** METHOD: protected abstract void WelcomeToStore()               ***
+        **********************************************************************
+        *** DESCRIPTION : This function is to display a message to the user***
+        ***               based off of the AppStore selected. It will      ***
+        ***               utilize an override in the Apple.cs and Google.cs***
+        ***               files.                                           ***
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected abstract void WelcomeToStore();
 
+        /*********************************************************************
+        *** METHOD: protected void SelectApp()                             ***
+        **********************************************************************
+        *** DESCRIPTION : SelectApp will display another menu listing off  ***
+        ***               all of the apps in the selected store if there   ***
+        ***               are any. Only allowing the user to go through    ***
+        ***               with purchases if the app is in stock. As well,  ***
+        ***               decrementing the amount available after a purchase**
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected void SelectApp()
         {
-            Console.WriteLine("Select an App:");
-
-            for (int i = 0; i < Apps.Count; ++i)
+            
+            //to check if there are any apps in the selected store
+            if(Apps.Count == 0)
             {
-                if (Apps[i].Available >= 0)
+                if (this is Apple)
                 {
-                    Console.WriteLine($"{i + 1}. {Apps[i].Name} (${Apps[i].Price}), {Apps[i].Available}");
+                    Console.WriteLine($"There are no apps in the Apple AppStore!");
+                } 
+                else if (this is Google) 
+                {
+                    Console.WriteLine($"There are no apps in the Google AppStore");
                 }
             }
-
-            int choice;
-            bool validInput;
-
-            do
+            else
             {
-                Console.Write("Enter the number of the App you want to purchase: ");
-                validInput = int.TryParse(Console.ReadLine(), out choice);
-                choice -= 1;
-
-                if (choice < 0 || choice >= Apps.Count)
+                Console.WriteLine("Select an App:");
+                for (int i = 0; i < Apps.Count; ++i)
                 {
-                    Console.WriteLine($"Invalid App number. Please select a number between 1 and {Apps.Count}.");
+                    if (Apps[i].Available >= 0)
+                    {
+                        Console.WriteLine($"{i + 1}. {Apps[i].Name} (${Apps[i].Price}), {Apps[i].Available}");
+                    }
                 }
-                else if (Apps[choice].Available <= 0)
+
+                int choice;
+                bool validInput;
+
+                do
                 {
+                    Console.Write("Enter the number of the App you want to purchase: ");
+                    validInput = int.TryParse(Console.ReadLine(), out choice);
+                    choice -= 1;
 
-                    Console.WriteLine($"{Apps[choice].Name} is sold out. Please select another App!");
-                }
-            } while (!validInput || choice < 0 || choice >= Apps.Count || Apps[choice].Available <= 0);
-
-            Selected = choice;
-            Apps[choice].Available--;
+                    if (choice < 0 || choice >= Apps.Count)
+                    {
+                        Console.WriteLine($"Invalid App number. Please select a number between 1 and {Apps.Count}.");
+                    }
+                    else if (Apps[choice].Available <= 0)
+                    {
+                        Console.WriteLine($"{Apps[choice].Name} is sold out. Please select another App!");
+                    }
+                } while (!validInput || choice < 0 || choice >= Apps.Count || Apps[choice].Available <= 0);
+            
+                Selected = choice;
+                Apps[choice].Available--;
+            }
         }
 
 
@@ -109,28 +198,55 @@ namespace AppStoreNS
 
         protected virtual void ReturnChange()
         {
-            int change = Paid - Apps[Selected].Price; 
-            int[] changeValues = { 10, 1 };
-            int[] changeQuantities = new int[changeValues.Length];
-
-            for (int i = 0; i < changeValues.Length; i++)
+            if (Apps.Count == 0)
             {
-                changeQuantities[i] = change / changeValues[i];
-                change %= changeValues[i];
-            }
 
-            Console.WriteLine("Change returned:");
-            for (int i = 0; i < changeValues.Length; i++)
+            } else
             {
-            Console.WriteLine($"({changeQuantities[i]})${changeValues[i]}");
+                int change = Paid - Apps[Selected].Price; 
+                int[] changeValues = { 10, 1 };
+                int[] changeQuantities = new int[changeValues.Length];
+
+                for (int i = 0; i < changeValues.Length; ++i)
+                {
+                    changeQuantities[i] = change / changeValues[i];
+                    change %= changeValues[i];
+                }
+
+                Console.WriteLine("Change returned:");
+
+                for (int i = 0; i < changeValues.Length; ++i)
+                {
+                Console.WriteLine($"({changeQuantities[i]})${changeValues[i]}");
+                }
             }
         }
 
         protected void DownloadApp()
         {
-            Console.WriteLine($"Downloading {Apps[Selected].Name}...");
-            Console.WriteLine($"Thank you for using our AppStore!");
+            if (Apps.Count == 0) //
+            {
+
+            } 
+            else
+            {
+                Console.WriteLine($"Downloading {Apps[Selected].Name}...");
+
+                if (this is Apple)
+                {
+                    Console.WriteLine($"Thank you for using the Apple AppStore!");
+                } 
+                else if (this is Google) 
+                {
+                    Console.WriteLine($"Thank you for using the Google AppStore!");
+                }
+                else
+                {
+                    Console.WriteLine($"Thank you for using our AppStore!");
+                }
+            }
         }
+
     }
 }
 

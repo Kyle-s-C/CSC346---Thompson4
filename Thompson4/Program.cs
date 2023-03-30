@@ -1,29 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿/********************************************************************
+*** NAME : Kyle Thompson                                          ***
+*** CLASS : CSc 346                                               ***
+*** ASSIGNMENT : Assignment #4                                    ***
+*** DUE DATE : 3-31-23                                            ***
+*** INSTRUCTOR : GAMRADT                                          ***
+*********************************************************************
+*** DESCRIPTION : Using VS Code create a user-defnined Abstract   ***
+***               Data Type using C# classes named App, AppStore, ***
+***               Apple, and google. This is the driver program   ***
+***               that will display a menu to the user to slect an***
+***               Appstore. Not exiting the program until the user***
+***               selects exit. Only one AppStore selected per time***
+********************************************************************/
 namespace AppStoreNS
 {
     class Program
     {
+        /********************************************************************
+        *** METHOD: static void Main(string[] args)                       ***
+        *********************************************************************
+        *** DESCRIPTION : This method will be the starting point at which ***
+        ***               the code inside is executed when ran. In this   ***
+        ***               method it will create the list using the default***
+        ***               constructor in App.cs. Allowing for each appstore***
+        ***               to manage their apps.                           ***
+        *** INPUT ARGS : n/a                                              ***
+        *** OUTPUT ARGS : n/a                                             ***
+        *** IN/OUT ARGS : n/a                                             ***
+        *** RETURN : void - no value                                      ***
+        ********************************************************************/
         static void Main(string[] args)
         {
-            // List<App> appleApps = new List<App>
-            // {
-            //     new App("Final Cut Pro", 54, 3),
-            //     new App("Logic Pro", 50, 4),
-            //     new App("MainStage", 46, 5),
-            //     new App("Pixelmator Pro", 57, 1)
-            // };
-            Apple appleStore = new Apple();
+            List<App> appleApps = new List<App>
+            {
+                new App("Final Cut Pro", 54, 3),
+                new App("Logic Pro", 50, 4),
+                new App("MainStage", 46, 5),
+                new App("Pixelmator Pro", 57, 2)
+            };
 
-            // List<App> googleApps = new List<App>
-            // {
-            //     new App("Cubasis 3", 46, 3),
-            //     new App("FL Studio Mobile", 50, 5),
-            //     new App("LumaFusion Pro", 57, 1)
+            Apple appleStore = new Apple(appleApps);
+
+
+            List<App> googleApps = new List<App>
+            {
+                new App("Cubasis 3", 46, 3),
+                new App("FL Studio Mobile", 50, 5),
+                new App("LumaFusion Pro", 57, 1)
                 
-            // };
-            Google googleStore = new Google();
+            };
+            Google googleStore = new Google(appleApps);
 
             bool exit = false;
 
