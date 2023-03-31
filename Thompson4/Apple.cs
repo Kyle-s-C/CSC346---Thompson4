@@ -30,6 +30,7 @@ namespace AppStoreNS
         *********************************************************************/
         public Apple(List<App>? apps = null) : base(apps)
         {
+
         }
 
             
@@ -45,7 +46,7 @@ namespace AppStoreNS
         *** IN/OUT ARGS : n/a                                              ***
         *** RETURN : n/a                                                   ***
         *********************************************************************/
-        private Apple(Apple copy) : base(copy.Apps, copy.Selected, copy.Paid)
+        private Apple(Apple copy) : base(copy.Apps)
         {
         }
     
