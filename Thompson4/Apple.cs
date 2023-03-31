@@ -21,8 +21,7 @@ namespace AppStoreNS
         *** METHOD: public Apple(...) : base(...)                          ***
         **********************************************************************
         *** DESCRIPTION : This is the default/overloaded/parameterized     ***
-        ***               constructor. It initializes the Apps, Selected,  ***
-        ***               and Paid properties of the Apple class. It has   ***
+        ***               constructor. It initializes the Apps. It has   ***
         ***               a base class from the AppStore class.            ***
         *** INPUT ARGS : List<App>? apps = null                            ***
         *** OUTPUT ARGS : n/a                                              ***
