@@ -31,6 +31,7 @@ namespace AppStoreNS
         *********************************************************************/
         public Apple(List<App>? apps = null) : base(apps)
         {
+            Apps = apps?? new List<App>();
         }
 
             
