@@ -1,32 +1,79 @@
+/********************************************************************
+*** NAME : Kyle Thompson                                          ***
+*** CLASS : CSc 346                                               ***
+*** ASSIGNMENT : Assignment #4                                    ***
+*** DUE DATE : 3-31-23                                            ***
+*** INSTRUCTOR : GAMRADT                                          ***
+*********************************************************************
+*** DESCRIPTION : Using VS Code, create a user-defined Abstract   ***
+***               Data Type using C# classes named App, AppStore, ***
+***               Apple, and Google. This is the Google class that***
+***               describes the current state of a specialized    ***
+***               AppStore class instance.                        ***
+********************************************************************/
+
 namespace AppStoreNS
 {
     public class Google : AppStore
     {
-        public Google(List<App>? apps = null, int selected = -1, int paid = 0) : base(apps, selected, paid)
+        /*********************************************************************
+        *** METHOD: public Google(...) : base(...)                         ***
+        **********************************************************************
+        *** DESCRIPTION : This is the default/overloaded/parameterized     ***
+        ***               constructor. It initializes the Apps property of ***
+        ***               the Google class by calling the base constructor ***
+        ***               from the AppStore class.                         ***
+        *** INPUT ARGS : List<App>? apps = null                            ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : returns a new instance of the Google object           ***
+        *********************************************************************/
+        public Google(List<App>? apps = null) : base(apps)
         {
-            Apps = apps ?? new List<App>();
-            Selected = selected;
-            Paid = paid;
-
-            // Apps.Add(new App("Cubasis 3", 46, 3));
-            // Apps.Add(new App("FL Studio Mobile", 50, 5));
-            // Apps.Add(new App("LumaFusion Pro", 57, 1));
-
         }
         
-        private Google(Google copy) : base (copy.Apps.Select(a => new App(a)).ToList(), copy.Selected, copy.Paid)
-        { 
-
-
+        /*********************************************************************
+        *** METHOD: private Google(...) : base(...)                        ***
+        **********************************************************************
+        *** DESCRIPTION : This is the copy constructor which copies        ***
+        ***               all attributes from one Google object instance   ***
+        ***               to another Google object instance                ***
+        *** INPUT ARGS : Google copy                                       ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
+        private Google(Google copy) : base(copy.Apps, copy.Selected, copy.Paid)
+        {
         }
     
-
+        /*********************************************************************
+        *** METHOD: protected override void WelcomeToStore()               ***
+        **********************************************************************
+        *** DESCRIPTION : Displays a welcome message specific to the Google***
+        ***               AppStore.                                        ***
+        *** INPUT ARGS : n/a                                               ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected override void WelcomeToStore()
         {
             Console.WriteLine("Welcome to the Google AppStore!");
             Console.WriteLine("-------------------------------");
         }
 
+
+        /*********************************************************************
+        *** METHOD: protected override void ReturnChange()                  ***
+        **********************************************************************
+        *** DESCRIPTION : Calculates and displays the change to return      ***
+        ***               to the user after they have paid for an app.     ***
+        *** INPUT ARGS : n/a                                               ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected override void ReturnChange()
         {
             int change = Paid - Apps[Selected].Price;

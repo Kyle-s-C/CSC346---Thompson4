@@ -49,7 +49,7 @@ namespace AppStoreNS
                 new App("LumaFusion Pro", 57, 1)
                 
             };
-            Google googleStore = new Google(appleApps);
+            Google googleStore = new Google(googleApps);
 
             bool exit = false;
 

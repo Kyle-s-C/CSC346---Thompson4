@@ -1,29 +1,66 @@
-
+/********************************************************************
+*** NAME : Kyle Thompson                                          ***
+*** CLASS : CSc 346                                               ***
+*** ASSIGNMENT : Assignment #4                                    ***
+*** DUE DATE : 3-31-23                                            ***
+*** INSTRUCTOR : GAMRADT                                          ***
+*********************************************************************
+*** DESCRIPTION : Using VS Code, create a user-defined Abstract   ***
+***               Data Type using C# classes named App, AppStore, ***
+***               Apple, and Google. This is the Apple class that ***
+***               represents a specialized instance of the        ***
+***               AppStore class, tailored specifically for the   ***
+***               Apple App Store.                                ***
+********************************************************************/
 
 namespace AppStoreNS
 {
     public class Apple : AppStore
     {
-        public Apple(List<App>? apps = null, int selected = -1, int paid = 0) : base(apps, selected, paid)
+        /*********************************************************************
+        *** METHOD: public Apple(...) : base(...)                          ***
+        **********************************************************************
+        *** DESCRIPTION : This is the default/overloaded/parameterized     ***
+        ***               constructor. It initializes the Apps, Selected,  ***
+        ***               and Paid properties of the Apple class. It has   ***
+        ***               a base class from the AppStore class.            ***
+        *** INPUT ARGS : List<App>? apps = null                            ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : returns a new instance of Apple object                ***
+        *********************************************************************/
+        public Apple(List<App>? apps = null) : base(apps)
         {
-            Apps = apps ?? new List<App>();
-            Selected = selected;
-            Paid = paid;  
-
         }
 
             
 
-        private Apple(Apple copy) 
-        { 
-            Apps  = copy.Apps;
-            Selected = copy.Selected;
-            Paid = copy.Paid;
-
+        /*********************************************************************
+        *** METHOD: private Apple(Apple copy)                              ***
+        **********************************************************************
+        *** DESCRIPTION : This is the copy constructor which copies        ***
+        ***               all attributes from one Apple object instance    ***
+        ***               to another Apple object instance                ***
+        *** INPUT ARGS : Apple copy                                        ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
+        private Apple(Apple copy) : base(copy.Apps, copy.Selected, copy.Paid)
+        {
         }
     
 
-       
+        /*********************************************************************
+        *** METHOD: protected override void WelcomeToStore()               ***
+        **********************************************************************
+        *** DESCRIPTION : This function displays a welcome message to the  ***
+        ***               user specific to the Apple AppStore.             ***
+        *** INPUT ARGS : n/a                                               ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected override void WelcomeToStore()
         {
             
@@ -31,6 +68,19 @@ namespace AppStoreNS
             Console.WriteLine("------------------------------");
         }
 
+        /*********************************************************************
+        *** METHOD: protected override void PayForApp()                    ***
+        **********************************************************************
+        *** DESCRIPTION : This method prompts the user to enter the        ***
+        ***               amount of each bill for payment specific to the  ***
+        ***               Apple AppStore. It then calculates the total     ***
+        ***               payment and checks if it is sufficient. If not,  ***
+        ***               it asks the user to try again.                   ***
+        *** INPUT ARGS : n/a                                               ***
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected override void PayForApp() 
         {
             

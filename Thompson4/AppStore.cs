@@ -13,7 +13,7 @@
 ********************************************************************/
 namespace AppStoreNS
 {
-    public abstract class AppStore
+    public abstract class AppStore 
     {
         //properties
         protected List<App> Apps { get; set; }
@@ -158,7 +158,19 @@ namespace AppStoreNS
         }
 
 
-
+        /*********************************************************************
+        *** METHOD: protected virtual void PayForApp()                     ***
+        **********************************************************************
+        *** DESCRIPTION : PayForApp will prompt the user to enter the      ***
+        ***               amount of each bill. It is virtual void as Google***
+        ***               will override PayForApp() accepting different    ***
+        ***               types of bills. In both scenarios it will always ***
+        ***               prompt for all payment values.                   ***
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected virtual void PayForApp()
         {
             int totalPayment = 0;
@@ -195,7 +207,18 @@ namespace AppStoreNS
         }
 
 
-
+        /*********************************************************************
+        *** METHOD: protected virtual void ReturnChange()                  ***
+        **********************************************************************
+        *** DESCRIPTION : ReturnChgange is virtual in AppStore as Apple    ***
+        ***               will override this method and create it's own    ***
+        ***               It will dispaly the quantity of each change value***
+        ***               It will always display even if 0 in change.      ***
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected virtual void ReturnChange()
         {
             if (Apps.Count == 0)
@@ -222,9 +245,20 @@ namespace AppStoreNS
             }
         }
 
+        /*********************************************************************
+        *** METHOD: protected void DownloadApp()                           ***
+        **********************************************************************
+        *** DESCRIPTION : DownloadApp will tell the customer that their    ***
+        ***               app was succesfully downloaded, and say          ***
+        ***               which specific store was used.                   ***
+        *** INPUT ARGS : n/a                                               *** 
+        *** OUTPUT ARGS : n/a                                              ***
+        *** IN/OUT ARGS : n/a                                              ***
+        *** RETURN : n/a                                                   ***
+        *********************************************************************/
         protected void DownloadApp()
         {
-            if (Apps.Count == 0) //
+            if (Apps.Count == 0) 
             {
 
             } 
