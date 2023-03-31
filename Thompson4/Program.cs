@@ -55,10 +55,10 @@ namespace AppStoreNS
 
             do
             {
-                Console.WriteLine("Select an app store:");
+                Console.WriteLine("Select an AppStore:");
                 Console.WriteLine("1. Apple");
                 Console.WriteLine("2. Google");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("3. Exit");
                 Console.Write("Enter your choice: ");
 
 
@@ -72,7 +72,7 @@ namespace AppStoreNS
                         case 2:
                             googleStore.PurchaseApp();
                             break;
-                        case 0:
+                        case 3:
                             exit = true;
                             break;
                         default:
@@ -84,9 +84,10 @@ namespace AppStoreNS
                 {
                     Console.WriteLine("Invalid input. Please try again.");
                 }
-
+                Console.WriteLine("Thank you for using the AppStore! Have a great day!");
                 Console.WriteLine();
             } while (!exit);
+            
         }
     }
 }
