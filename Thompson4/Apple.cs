@@ -21,8 +21,8 @@ namespace AppStoreNS
         *** METHOD: public Apple(...) : base(...)                          ***
         **********************************************************************
         *** DESCRIPTION : This is the default/overloaded/parameterized     ***
-        ***               constructor. It initializes the Apps, Selected,  ***
-        ***               and Paid properties of the Apple class. It has   ***
+        ***               constructor. It initializes the Apps properties  ***
+        ***               of the Apple class. It has                       ***
         ***               a base class from the AppStore class.            ***
         *** INPUT ARGS : List<App>? apps = null                            ***
         *** OUTPUT ARGS : n/a                                              ***
@@ -31,6 +31,7 @@ namespace AppStoreNS
         *********************************************************************/
         public Apple(List<App>? apps = null) : base(apps)
         {
+            Apps = apps?? new List<App>();
         }
 
             
@@ -46,8 +47,9 @@ namespace AppStoreNS
         *** IN/OUT ARGS : n/a                                              ***
         *** RETURN : n/a                                                   ***
         *********************************************************************/
-        private Apple(Apple copy) : base(copy.Apps, copy.Selected, copy.Paid)
+        private Apple(Apple copy) : base(copy.Apps)
         {
+            Apps = copy.Apps;
         }
     
 

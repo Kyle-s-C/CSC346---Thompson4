@@ -30,6 +30,7 @@ namespace AppStoreNS
         *********************************************************************/
         public Google(List<App>? apps = null) : base(apps)
         {
+            Apps = apps?? new List<App>();
         }
         
         /*********************************************************************
@@ -43,8 +44,9 @@ namespace AppStoreNS
         *** IN/OUT ARGS : n/a                                              ***
         *** RETURN : n/a                                                   ***
         *********************************************************************/
-        private Google(Google copy) : base(copy.Apps, copy.Selected, copy.Paid)
+        private Google(Google copy) : base(copy.Apps)
         {
+            Apps = copy.Apps;
         }
     
         /*********************************************************************
