@@ -29,9 +29,11 @@ namespace AppStoreNS
         *** IN/OUT ARGS : n/a                                              ***
         *** RETURN : returns a new instance of Apple object                ***
         *********************************************************************/
-        public Apple(List<App>? apps = null) : base(apps)
+        public Apple(List<App>? apps = null, int selected = 0, int paid = 0) : base(apps, selected, paid)
         {
             Apps = apps?? new List<App>();
+            Paid = paid;
+            Selected = selected;
         }
 
             
