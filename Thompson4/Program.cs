@@ -84,7 +84,7 @@ namespace AppStoreNS
                 {
                     Console.WriteLine("Invalid input. Please try again.");
                 }
-                Console.WriteLine("Thank you for using the AppStore! Have a great day!");
+                
                 Console.WriteLine();
             } while (!exit);
             
